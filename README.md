@@ -12,6 +12,7 @@ Programa:
 
 Modo SERVIDOR (tipo: s) //Completar ou copiar do Cleinte caso a logica seja a mesma
 * Comandos *
+    
      cdr
      lsr	
      get
