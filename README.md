@@ -1,7 +1,7 @@
 Redes I - Professor: Luiz Albini
 Trabalho 1 - Comunicação entre dois computadores através de RAW Socket
-Marco Antonio Pio Mendes   - GRR20120725
-Renan Luciano Burda        - GRR20120679	
+ 
+Renan Luciano Burda        	
 
 Execução do programa:
 
@@ -47,57 +47,3 @@ Modo CLIENTE (tipo: c)
      exit //OK
 	termina o programa.
 
-// --------------------- TIMEOUT-----------------------
-void timeout(int socket,protocolo *msg){
-	fd_set readset;
-	struct timeval tv;
-	int i=0;
-	int result;
-	while(i<TENTATIVA_MAX){
-		tv.tv_sec = TEMPO_ESPERA;
-		tv.tv_usec = 0;
-		//send(socket,buffer,tam_buffer, 0);
-		FD_ZERO(&readset);
-		FD_SET(socket, &readset);
-		result = select(socket+1, &readset, NULL, NULL, &tv);
-		if (result <= 0) { //timeout
-			printf("TIMEOUT - %d\n",i);
-			envia_msg(socket,msg);
-			i++;
-		}else if(FD_ISSET(socket, &readset)){
-			//printf("RECEBEU PACOTE\n");
-			//recebeu quebra o loop
-			break;
-		}
-	}
-	if(i==TENTATIVA_MAX){
-		printf("ERRO - TIMEOUT MAXIMO ATINGIDO ABORTANDO OPERAÇÂO!\n");
-		exit(0);
-	}
-}
-void timeout_dados(int socket,protocolo *msg,protocolo *msg2){
-	fd_set readset;
-	struct timeval tv;
-	int i=0;
-	int result;
-	while(i<TENTATIVA_MAX){
-		tv.tv_sec = TEMPO_ESPERA;
-		tv.tv_usec = 0;
-		FD_ZERO(&readset);
-		FD_SET(socket, &readset);
-		result = select(socket+1, &readset, NULL, NULL, &tv);
-		if (result <= 0) { //timeout
-			printf("TIMEOUT - %d\n",i);
-			envia_msg(socket,msg);
-			envia_msg(socket,msg2);
-			i++;
-		}else if (FD_ISSET(socket, &readset)){
-			//recebeu quebra o loop
-			break;
-		}
-	}
-	if(i==TENTATIVA_MAX){
-		printf("ERRO - TIMEOUT MAXIMO ATINGIDO ABORTANDO OPERAÇÂO!\n");
-		exit(0);
-	}
-}
