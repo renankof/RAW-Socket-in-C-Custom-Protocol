@@ -10,7 +10,7 @@ Execução do programa:
 
 Programa:
 
-Modo SERVIDOR (tipo: s) //Completar ou copiar do Cleinte caso a logica seja a mesma
+Modo SERVIDOR (tipo: s)
 * Comandos *
     
      cdr
