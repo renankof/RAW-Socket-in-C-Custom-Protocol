@@ -14,17 +14,27 @@ Modo SERVIDOR (tipo: s) //Completar ou copiar do Cleinte caso a logica seja a me
 * Comandos *
     
      cdr
-     lsr	
+
+     lsr
+	
      get
+
      put 
 	
 
 Modo CLIENTE (tipo: c)
-* Comandos *		   
-     ls      
-     lsr	
-     put     
-     get     
-     cd      
-     cdr     
+* Comandos *	
+	   
+     ls 
+     
+     lsr
+	
+     put 
+    
+     get
+     
+     cd 
+     
+     cdr
+     
      exit
